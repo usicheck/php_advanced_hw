@@ -15,7 +15,7 @@ class User
 
     public function getUserData(): void
     {
-        if (!is_numeric($this->id) || ((strlen($this->password)) > 8)) {
+        if (!is_numeric($this->id) || ((strlen($this->password)) > 9)) {
             try {
                 throw new Exception("ID не є числовим або password більше 8 символів.");
             } catch (Exception $e) {
