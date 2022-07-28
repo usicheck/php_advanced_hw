@@ -111,7 +111,7 @@ echo 'Другий колір в RGB: ' . '<br>';
 echo $color2->getRed() . '<br>';
 echo $color2->getGreen() . '<br>';
 echo $color2->getBlue() . '<br>';
-
+//
 $colorMixed = $color1->mix($color2);
 echo 'Мікс кольорів (середнє значення) в RGB: ' . '<br>';
 echo $colorMixed->getRed() . '<br>';
