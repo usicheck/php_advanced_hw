@@ -1,5 +1,5 @@
 <?php
 
-echo 'hi ev!';
+echo 'hi every!';
 
 
