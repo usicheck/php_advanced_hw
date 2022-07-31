@@ -1,4 +1,96 @@
 <?php
+//пример использования trait и добавление в класс
+trait Trait1 {
+    public function test(): int
+    {
+        return 1;
+    }
+}
+trait Trait2 {
+    public function test(): int
+    {
+        return 2;
+    }
+}
+trait Trait3 {
+    public function test(): int
+    {
+        return 3;
+    }
+}
+
+class Test {
+    use Trait1, Trait2, Trait3 {
+        Trait1::test insteadof Trait2;
+        Trait1::test insteadof Trait3;
+        Trait2::test as testReturn2;
+        Trait3::test as testReturn3;
+    }
+
+    public function getSum()
+    {
+        echo $this->test()+$this->testReturn2()+$this->testReturn3() . PHP_EOL;
+    }
+}
+
+$obj=new Test;
+$obj->getSum();
+
+
+
+////пример использования интерфейса и его инплементации
+//interface iName
+//{
+////protected string $name;//тут не сработает ни область видимости (только public), ни объявление свойств, только методы
+//    public function iName($name);
+//}
+//
+//interface iAge
+//{
+//    public function iAge($age);
+//}
+//
+//class NameAge implements iName, iAge // в отличии от абстрактного класса, имплементировать можно несколь интерфейсов
+//{
+//    function iName($name) {
+//        echo $name . PHP_EOL;
+//    }
+//    function iAge($age){
+//        echo $age . PHP_EOL;
+//    }
+//}
+//$NameAge=new NameAge;
+//$NameAge->iName('Vasya');
+//$NameAge->iAge('28');
+//
+//
+//
+////пример использования абстрактного класса и его наследование
+//abstract class AbstractName
+//{
+//    protected string $name;
+//
+//    function __construct($name) //тут можно реализовать функцию, а в интерфейсе нельзя
+//    {
+//        $this->name = $name;
+//    }
+//    abstract function getName();
+//}
+//
+//class VoidName extends AbstractName
+//{
+//    function getName()
+//    {
+//        echo $this->name . PHP_EOL;
+//    }
+//}
+//
+//$obj = new VoidName('Yasia');
+//$obj->getName();
+
+
+
+
 //пример использования конструктора функции __construct
 //class Person
 //{
@@ -64,7 +156,6 @@
 //
 //if($tom == $tomas) echo "переменные tom и tomas равны<br>";
 //else echo "переменные tom и tomas НЕ равны<br>";
-
 
 
 //пример с созданием нескольких объектов из одного класса и их вывод
@@ -160,7 +251,6 @@
 //var_dump($transport->getEngineSound());
 
 
-
 //пример с конструктором
 
 //class ValueObject {
@@ -186,8 +276,6 @@
 //
 //
 //}
-
-
 
 
 //class Class1 {
