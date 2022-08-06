@@ -97,7 +97,6 @@ class Color
 
         return $colorRandom;
     }
-
 }
 
 $color1 = new Color(200, 100, 100);
@@ -111,7 +110,7 @@ echo 'Другий колір в RGB: ' . '<br>';
 echo $color2->getRed() . '<br>';
 echo $color2->getGreen() . '<br>';
 echo $color2->getBlue() . '<br>';
-//
+
 $colorMixed = $color1->mix($color2);
 echo 'Мікс кольорів (середнє значення) в RGB: ' . '<br>';
 echo $colorMixed->getRed() . '<br>';
@@ -121,7 +120,10 @@ echo $colorMixed->getBlue() . '<br>';
 $colorRandom = new Color(0, 0, 0);
 echo 'Рандомне значення кольорів в RGB: ' . '<br>';
 
-print_r($colorRandom->random($colorRandom));
+//print_r($colorRandom->random($colorRandom));
+$colorRandom=Color::random($colorRandom);
+var_dump($colorRandom);
 
-echo '<br>'.'Чи однакові значення мають об\'єкти: ' . '<br>';
-var_dump ($colorMixed->equals($color1, $color2));
+echo '<br>' . 'Чи однакові значення мають об\'єкти: ' . '<br>';
+var_dump($colorMixed->equals($color1, $color2));
+

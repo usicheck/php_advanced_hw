@@ -35,13 +35,29 @@ class User
         }
         return $e->getFile();
     }
+
+    public function __set($name, $value)
+    {
+        return $this->name = $value;
+    }
+
+    public function __get($name)
+    {
+        echo $this->__set($this->name, 'Vasya');
+    }
 }
+//    public function getName(){
+//        return $this->name;
+//    }
+//}
 
 $user = new User();
 
-echo $user->setName() . ' — ім\'я з приватного методу;' . '<br>';
-echo $user->setAge() . ' — вік з приватного методу;' . '<br>';
+//echo $user->setName() . ' — ім\'я з приватного методу;' . '<br>';
+//echo $user->setAge() . ' — вік з приватного методу;' . '<br>';
 
-echo $user->getAll() . ' — ім\'я, вік, email;' . '<br>';
+//echo $user->getAll() . ' — ім\'я, вік, email;' . '<br>';
 
-echo $user->setEmail();
+//echo $user->setEmail();
+
+echo $user->name;
