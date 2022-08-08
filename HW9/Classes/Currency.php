@@ -9,53 +9,27 @@ class Currency
     private string $isoCode;
     private array $isoCodeArr = ['USD', 'EUR', 'UAH'];
 
-    public function __construct($isoCode)
+    public function __construct(string $isoCode)
     {
-        $this->isoCode = $isoCode;
+        $this->setIsoCode($isoCode);
     }
 
     public function getIsoCode(): string
     {
-        return $this->setIsoCode();
+        return $this->isoCode;
     }
 
-    public function setIsoCode(): string
+    public function setIsoCode(string $code)
     {
-        $arr = [];
-        foreach ($this->isoCodeArr as $value) {
-            if ($this->isoCode == $value) {
-                $arr = $value;
-            }
-            if (empty($arr)) {
-                try {
-                    throw new Exception('InvalidArgumentException');
-                } catch (Exception $e) {
-                    $arr = $e->getMessage();
-                }
-            }
+        if (!in_array($code, $this->isoCodeArr)) {
+            throw new Exception('InvalidArgumentException');
         }
-        return $arr;
+        $this->isoCode = $code;
     }
 
     public function equals($currency): bool
     {
-        if ($this->getIsoCode() === $currency->getIsoCode()) {
-            return true;
-        } else {
-            return false;
-        }
+        return $this->getIsoCode() === $currency->getIsoCode();
     }
 }
 
-$currency = new Currency('EUR');
-echo 'First object of class Currency: ' . '<strong>' . $currency->getIsoCode() . '</strong>';
-echo '<br>';
-
-$currency1 = new Currency('EUR');
-echo 'Second object of class Currency: ' . '<strong>' . $currency1->getIsoCode() . '</strong>';
-echo '<br>';
-
-echo '<br>';
-echo 'Are they equal?';
-echo '<br>';
-var_dump($currency1->equals($currency));

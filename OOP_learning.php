@@ -1,40 +1,117 @@
 <?php
+//пример обращения по индексу
+//class User
+//{
+//    public $surname; // фамилия
+//    public $name; // имя
+//    public $patronymic; // отчество
+//
+//    public function __construct($surname, $name, $patronymic)
+//    {
+//        $this->surname = $surname;
+//        $this->name = $name;
+//        $this->patronymic = $patronymic;
+//    }
+//}
+//$user = new User('Иванов', 'Иван', 'Иванович');
+//
+//$props = ['surname', 'name', 'patronymic'];
+//echo $user->{$props[0]}; // выведет 'Иванов'
+
+//Пример перебора циклом массива из объектов и их свойств
+//class City
+//{
+//    public string $name;
+//    public int $population;
+//
+//
+//    public function __construct($name,$population){
+//        $this->name=$name;
+//        $this->population=$population;
+//    }
+//
+//}
+//$cities=[
+//    new City ('Chicago',100000),
+//    new City ('Miami',9000),
+//    new City ('Shanhai',5000),
+//];
+//
+//foreach ($cities as $city){
+//    echo $city->name . ' ' . $city->population . '<br>';
+//}
+
+//Пример проверки условий для set в классе
+//class Worker
+//{
+//    private int $age=5;
+//
+//    private function checkAge($age): bool
+//    {
+//        if (($age > 1) & ($age < 100)) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
+//    public function setAge($age): int
+//    {
+//        if ($this->checkAge($age)){
+//            return $this->age = $age;
+//        }
+//        else {
+//            return $this->age;
+//        }
+//    }
+//
+//    public function getAge(): int
+//    {
+//        return $this->setAge($this->age);
+//    }
+//
+//}
+//
+//$ivan = new Worker;
+//$ivan->setAge(23);
+//
+//echo $ivan->getAge();
+
 //пример использования trait и добавление в класс
-trait Trait1 {
-    public function test(): int
-    {
-        return 1;
-    }
-}
-trait Trait2 {
-    public function test(): int
-    {
-        return 2;
-    }
-}
-trait Trait3 {
-    public function test(): int
-    {
-        return 3;
-    }
-}
-
-class Test {
-    use Trait1, Trait2, Trait3 {
-        Trait1::test insteadof Trait2;
-        Trait1::test insteadof Trait3;
-        Trait2::test as testReturn2;
-        Trait3::test as testReturn3;
-    }
-
-    public function getSum()
-    {
-        echo $this->test()+$this->testReturn2()+$this->testReturn3() . PHP_EOL;
-    }
-}
-
-$obj=new Test;
-$obj->getSum();
+//trait Trait1 {
+//    public function test(): int
+//    {
+//        return 1;
+//    }
+//}
+//trait Trait2 {
+//    public function test(): int
+//    {
+//        return 2;
+//    }
+//}
+//trait Trait3 {
+//    public function test(): int
+//    {
+//        return 3;
+//    }
+//}
+//
+//class Test {
+//    use Trait1, Trait2, Trait3 {
+//        Trait1::test insteadof Trait2;
+//        Trait1::test insteadof Trait3;
+//        Trait2::test as testReturn2;
+//        Trait3::test as testReturn3;
+//    }
+//
+//    public function getSum()
+//    {
+//        echo $this->test()+$this->testReturn2()+$this->testReturn3() . PHP_EOL;
+//    }
+//}
+//
+//$obj=new Test;
+//$obj->getSum();
 
 
 
