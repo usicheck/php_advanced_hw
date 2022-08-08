@@ -2,7 +2,10 @@
 
 namespace Classes;
 
+use Classes\Currency;
 use Exception;
+
+require_once __DIR__.'/Currency.php';
 
 class Money
 {
@@ -51,3 +54,4 @@ class Money
         return $sum;
     }
 }
+
