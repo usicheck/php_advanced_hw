@@ -1,4 +1,92 @@
 <?php
+
+//Как задать константу и обратиться к ней вне класса
+//class Test
+//{
+//    // Задаем константу:
+//    const CONSTANT = 'test';
+//}
+//
+//echo Test::CONSTANT; // выведет 'test'
+
+//Вызов константы внутри класса
+//class Test
+//{
+//    const CONSTANT = 'test';
+//
+//    function getConstant() {
+//        return self::CONSTANT;
+//    }
+//}
+//$test = new Test;
+//echo $test->getConstant(); // выведет 'test'
+
+
+//Пример обращения к статической функции внутри класса
+//class Math
+//{
+//    // Найдем удвоенную сумму:
+//    public static function getDoubleSum($a, $b)
+//    {
+//        return 2 * self::getSum($a, $b); // используем другой метод
+//    }
+//
+//    public static function getSum($a, $b)
+//    {
+//        return $a + $b;
+//    }
+//
+//    public static function getProduct($a, $b)
+//    {
+//        return $a * $b;
+//    }
+//}
+//echo Math::getDoubleSum(1, 2);
+
+
+
+//Пример статического метода в классе. Для его вызова не нужно создавать объект, а обратиться можно через ::
+//class Test
+//{
+//    // Статический метод:
+//    public static function method()
+//    {
+//        return '!!!';
+//    }
+//}
+//echo Test::method(); // выведет '!!!'
+
+//Оператор instanceof — выявляет принадлежность объекта к классу
+//var_dump($obj instanceof Class1);
+
+//пример хранения метода в переменной или в массиве, с вызовом по индексу
+//class User
+//{
+//    private $name;
+//    private $age;
+//
+//    public function __construct($name, $age)
+//    {
+//        $this->name = $name;
+//        $this->age = $age;
+//    }
+//
+//    public function getName()
+//    {
+//        return $this->name;
+//    }
+//
+//    public function getAge()
+//    {
+//        return $this->age;
+//    }
+//}
+//$user = new User('john', 21);
+//	$method = 'getName';
+//	echo $user->$method(); // выведет 'john'
+//$methods = ['getName', 'getAge'];
+//echo $user->{$methods[0]}(); // выведет 'john'
+
 //пример обращения по индексу
 //class User
 //{

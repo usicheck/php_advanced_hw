@@ -1,0 +1,5 @@
+DELETE FROM orders WHERE id = 2;
+
+DROP TABLE orders;
+
+ALTER TABLE customers MODIFY COLUMN `name` VARCHAR(100) NOT NULL;

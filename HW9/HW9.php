@@ -1,18 +1,30 @@
 <?php
 
-use Classes\Money;
+//use Classes\Money;
+//use Classes\Currency;
+
+//require_once 'Classes/Currency.php';
+//require_once 'Classes/Money.php';
+//spl_autoload_register();
+
+ spl_autoload_register(function($class) {
+    $filename = str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
+    if (!file_exists($filename)){
+        throw new Exception("File $class does not exist in path $filename!");
+    }
+    require_once($filename);
+});
+
 use Classes\Currency;
 
-require_once 'Classes/Currency.php';
-require_once 'Classes/Money.php';
 
 try {
-    $currency = new Currency('USD');
+    $currency = new Classes\Currency('USD');
     $currency->setIsoCode('EUR');
     echo 'First object of class Currency: ' . '<strong>' . $currency->getIsoCode() . '</strong>';
     echo '<br>';
 
-    $currency1 = new Currency('EUR');
+    $currency1 = new Classes\Currency('EUR');
     echo 'Second object of class Currency: ' . '<strong>' . $currency1->getIsoCode() . '</strong>';
     echo '<br>';
 
@@ -25,7 +37,7 @@ try {
 }
 
 try {
-    $obj = new Money(45, $currency);
+    $obj = new Classes\Money(45, $currency);
     echo '<pre>';
     print_r($obj);
     echo '</pre>';
@@ -45,7 +57,7 @@ try {
     echo '</pre>';
 
 
-    $obj1 = new Money(28, $currency1);
+    $obj1 = new Classes\Money(28, $currency1);
     echo '<br>';
     echo 'Second object of class Money: ';
     echo '<pre>';
