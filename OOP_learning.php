@@ -1,4 +1,27 @@
 <?php
+//Пример класса с плейсхолдером для запроса в базу данных
+class Person{
+    public $name;
+    public $addr;
+    public $city;
+
+function __construct($n,$a,$c)
+{
+$this->name = $n;
+$this->addr = $a;
+$this->city = $c;
+} # так далі...
+}
+
+$pushkin = new Person('Тарас Шевченко','с. Моринці','Кіївська губернія');
+
+//а тут найцікавіше
+
+$query = $dbh->prepare("INSERT INTO `folks` (name, addr, city) values (:name, :addr, :city)");
+$query->execute((array)$pushkin);
+
+
+
 
 //Как задать константу и обратиться к ней вне класса
 //class Test
