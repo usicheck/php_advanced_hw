@@ -49,8 +49,11 @@ $stat = $statements->fetchAll();
                         </td>
                     </tr>
                 </table>
-                <button type="submit" class="btn btn-outline-danger" for="danger-outlined"><img src="storage/trash.png"
-                    width='30' height='30' alt="">Delete user</button>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary"><img src="storage/trash.png" width='30' height='30'
+                                                                       alt=""> Delete user
+                    </button>
+                </div>
                 <div class="col-12">
                     <a href="users.php">Create user</a>
                 </div>
