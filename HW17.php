@@ -23,7 +23,7 @@ class Ostrich implements BirdEat, BirdFly //страус
     }
 }
 try {
-    $ostrich = new Ostrich;
+    $ostrich = new Ostrich();
     $ostrich->fly('not fly');
 } catch (Exception $exception) {
     var_dump ($exception->getMessage());
