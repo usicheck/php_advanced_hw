@@ -14,7 +14,10 @@ interface iType
 {
     public function __construct($model, $price);
 
-    public function getAuto();
+    public function getModel();
+
+    public function getPrice();
+
 }
 
 class Taxi
@@ -26,9 +29,14 @@ class Taxi
         $this->type = $type;
     }
 
-    public function getTaxi()
+    public function getModel()
     {
-        $this->type->getAuto();
+        return $this->type->getModel();
+    }
+
+    public function getPrice()
+    {
+        return $this->type->getPrice();
     }
 }
 
@@ -43,10 +51,16 @@ class Econom implements iType
         $this->price = $price;
     }
 
-    public function getAuto()
+    public function getModel()
     {
-        echo 'Your auto econom class — ' . $this->model . ', ' . $this->price;
+        echo 'Your auto econom class — ' . $this->model . '.';
     }
+
+    public function getPrice()
+    {
+        echo 'Your auto costs — ' . $this->price . ' uah.';
+    }
+
 }
 
 class Standart implements iType
@@ -60,9 +74,14 @@ class Standart implements iType
         $this->price = $price;
     }
 
-    public function getAuto()
+    public function getModel()
     {
-        echo 'Your auto standart class — ' . $this->model . ', ' . $this->price;
+        echo 'Your auto standart class — ' . $this->model . '.';
+    }
+
+    public function getPrice()
+    {
+        echo 'Your auto costs — ' . $this->price . ' uah.';
     }
 }
 
@@ -77,11 +96,20 @@ class Lux implements iType
         $this->price = $price;
     }
 
-    public function getAuto()
+    public function getModel()
     {
-        echo 'Your auto lux class — ' . $this->model . ', ' . $this->price;
+        echo 'Your auto lux class — ' . $this->model . '.';
+    }
+
+    public function getPrice()
+    {
+        echo 'Your auto costs — ' . $this->price . ' uah.';
     }
 }
 
 $taxi = new Taxi(new Standart('Chevrolet', 100));
-$taxi->getTaxi();
+$taxi->getModel();
+echo PHP_EOL;
+$taxi->getPrice();
+echo PHP_EOL;
+
