@@ -12,104 +12,104 @@
 
 interface iType
 {
-    public function __construct($model, $price);
-
     public function getModel();
 
     public function getPrice();
 
 }
 
-class Taxi
-{
-    private iType $type;
-
-    public function __construct(iType $type)
-    {
-        $this->type = $type;
-    }
-
-    public function getModel()
-    {
-        return $this->type->getModel();
-    }
-
-    public function getPrice()
-    {
-        return $this->type->getPrice();
-    }
-}
-
 class Econom implements iType
 {
-    public string $model;
-    public float $price;
-
-    public function __construct($model, $price)
-    {
-        $this->model = $model;
-        $this->price = $price;
-    }
-
     public function getModel()
     {
-        echo 'Your auto econom class — ' . $this->model . '.';
+        echo 'Your auto econom class — Lada Kalina. ' . PHP_EOL;
     }
 
     public function getPrice()
     {
-        echo 'Your auto costs — ' . $this->price . ' uah.';
+        echo 'Your auto costs — 15 uah/km.' . PHP_EOL;
     }
 
 }
 
 class Standart implements iType
 {
-    public string $model;
-    public float $price;
-
-    public function __construct($model, $price)
-    {
-        $this->model = $model;
-        $this->price = $price;
-    }
 
     public function getModel()
     {
-        echo 'Your auto standart class — ' . $this->model . '.';
+        echo 'Your auto standart class — Nissan Juke. ' . PHP_EOL;
     }
 
     public function getPrice()
     {
-        echo 'Your auto costs — ' . $this->price . ' uah.';
+        echo 'Your auto costs — 25 uah/km.' . PHP_EOL;
     }
 }
 
 class Lux implements iType
 {
-    public string $model;
-    public float $price;
-
-    public function __construct($model, $price)
-    {
-        $this->model = $model;
-        $this->price = $price;
-    }
 
     public function getModel()
     {
-        echo 'Your auto lux class — ' . $this->model . '.';
+        echo 'Your auto lux class — Jaguar, чьо ні. ' . PHP_EOL;
     }
 
     public function getPrice()
     {
-        echo 'Your auto costs — ' . $this->price . ' uah.';
+        echo 'Your auto costs — 35 uah/km.' . PHP_EOL;
     }
 }
 
-$taxi = new Taxi(new Standart('Chevrolet', 100));
-$taxi->getModel();
-echo PHP_EOL;
-$taxi->getPrice();
-echo PHP_EOL;
+abstract class ATaxi implements iType
+{
+    abstract protected function callType(): iType;
 
+    public function getModel()
+    {
+        $type = $this->callType();
+        $type->getModel();
+    }
+
+    public function getPrice()
+    {
+        $type = $this->callType();
+        $type->getPrice();
+    }
+}
+
+class EconomApp extends ATaxi
+{
+    public function callType(): iType
+    {
+        return new Econom();
+
+    }
+}
+
+class StandartApp extends ATaxi
+{
+    public function callType(): iType
+    {
+        return new Standart();
+
+    }
+}
+
+class LuxApp extends ATaxi
+{
+    public function callType(): iType
+    {
+        return new Lux();
+
+    }
+}
+
+function taxi(ATaxi $taxi)
+{
+    $taxi->callType()->getModel();
+    $taxi->callType()->getPrice();
+}
+
+taxi(new EconomApp());
+taxi(new StandartApp());
+taxi(new LuxApp());
